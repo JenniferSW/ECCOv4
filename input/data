@@ -75,9 +75,13 @@
  &PARM03
  nIter0=1,
 #2 lev2 for testing:
-#nTimeSteps=8,
+# nTimeSteps=1440,
+# 1 year ts 3600 = 8760
+ nTimeSteps = 8760,
+#5y ts 1800
+# nTimeSteps=87648,
 #20y:
- nTimeSteps=175295,
+# nTimeSteps=175295,
 #60 years
 #nTimeSteps=525985,
 #
@@ -97,7 +101,7 @@
  alph_AB=0.5,
  beta_AB=0.281105,
 #
- pChkptFreq  =31536000.0,
+# pChkptFreq  =31536000.0,
  chkptFreq   =31536000.0,
 # taveFreq    =31536000.0,
 # dumpFreq    =31536000.0,
@@ -106,6 +110,10 @@
  dumpInitAndLast = .TRUE.,
  adjMonitorFreq = 864000.0,
  pickupStrictlyMatch=.FALSE.,
+# 15 Tage
+# pChkPtFreq = 1296000.0,
+# 5 Tage
+ pChkPtFreq = 432000.0,
  &
 
 # Gridding parameters

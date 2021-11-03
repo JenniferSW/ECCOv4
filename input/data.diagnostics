@@ -26,9 +26,9 @@
                  'ADVxHEFF','ADVyHEFF','DFxEHEFF','DFyEHEFF',
                  'ADVxSNOW','ADVySNOW','DFxESNOW','DFyESNOW',
                  'SIuice  ','SIvice  ',
-   filename(1) = 'state_2d_set1',
+#   filename(1) = 'state_2d_set1',
 #---
-  frequency(2) = 2635200.0,
+  frequency(2) = 2635200.0, 
    fields(1:3,2) = 'THETA   ','SALT    ',
 #stuff that is not quite state variables (and may not be quite
 #synchroneous) but are added here to reduce file number
@@ -50,7 +50,7 @@
   frequency(4) = 2635200.0,
    fields(1:8,4) = 'DFxE_TH ','DFyE_TH ','ADVx_TH ','ADVy_TH ',
                  'DFxE_SLT','DFyE_SLT','ADVx_SLT','ADVy_SLT',
-   filename(4) = 'trsp_3d_set2',
+#   filename(4) = 'trsp_3d_set2',
 #vertically integrate fields we only use to compute vertically integr.
 #meridional transports (also omit vertical transports, both to save space)
 #---
@@ -146,6 +146,36 @@
   frequency(17) = 2635200.0,
    fields(1:7,17) = 'TFLUX   ','SItflux ','SFLUX   ',
         'oceQsw  ','oceSPflx','SIsnPrcp','SIacSubl',
+  
+  frequency(18) = 432000.0, 
+#604800.0   263520.0,
+   fields(1:4,18) = 'IBCCL_01','IBLCL_01',
+		'IBUCL_01','IBVCL_01',
+   levels(1,18) = 1.,
+   fileName(18) = 'iceberg_diags01',
+
+  frequency(19) = 432000.0,
+#263520.0,
+   fields(1:4,19) = 'IBCCL_02','IBLCL_02',
+                'IBUCL_02','IBVCL_02',
+   levels(1,19) = 1.,
+   fileName(19) = 'iceberg_diags02',
+
+  frequency(20) = 432000.0,
+#263520.0,
+   fields(1:4,20) = 'IBCCL_03','IBLCL_03',
+                'IBUCL_03','IBVCL_03',
+   levels(1,20) = 1.,
+   fileName(20) = 'iceberg_diags03',
+#
+  frequency(21) = 432000.0,
+#263520.0,
+   fields(1:4,21) = 'IBCCL_04','IBLCL_04',
+                'IBUCL_04','IBVCL_04',
+   levels(1,21) = 1.,
+   fileName(21) = 'iceberg_diags04',
+
+
 #  filename(17) = 'state_2d_set2',
 #---
  &
