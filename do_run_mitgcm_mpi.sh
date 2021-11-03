@@ -1,10 +1,14 @@
 #!/bin/bash
 
 WORKDIR=$(pwd)
+BUILDDIR="build"
+INPUTDIR="input"
+RUNDIR="run"
+
 
 echo "# Locating needed directories"
 
-if [ ! -d "build" ]; then
+if [ ! -d "$BUILDDIR/" ]; then
 
   echo "= Directories not found!"
   echo "> Go to parent directory"
@@ -12,7 +16,7 @@ if [ ! -d "build" ]; then
   WORKDIR="$WORKDIR/.."
   cd $WORKDIR
 
-  if [ ! -d "build" ]; then
+  if [ ! -d "$BUILDDIR/" ]; then
     exit 1
   fi
 fi
@@ -23,28 +27,29 @@ echo "= Working now in $(pwd)"
 
 
 
-if [ ! -d $run ]; then
+if [ ! -d "$RUNDIR/" ]; then
  echo "= run directory not found!"
  echo "ABNORMAL END"
  exit 1
 fi
 
-#if [ ! -d $inpdir ]; then
-# echo "= input directory not found!"
-# echo "ABNORMAL END"
-# exit 1
-#fi
+if [ ! -d "$INPUTDIR/" ]; then
+ echo "= input directory not found!"
+ echo "ABNORMAL END"
+ exit 1
+fi
 
 
 #
 # Link input and build artifact
 #
+cd $RUNDIR
+echo "> changed to $(pwd) "
+
 
 echo "> Link inputs and artifacts"
-cd run_ecco
-
-ln -s ../build/mitgcmuv .
-ln -s ../input_ecco/* .
+ln -s ../$BUILDDIR/mitgcmuv .
+ln -s ../$INPUTDIR/* .
 ln -s ../inputs_baseline2/input*/* .
 ln -s ../forcing_baseline2 .
 
@@ -56,4 +61,7 @@ echo "> Run model"
 time mpirun -np 24 ./mitgcmuv > output.txt
 
 echo "= Run finished"
+echo "build directory $BUILDDIR"
+echo "input directory $INPUTDIR"
+echo "run directory $RUNDIR"
 
